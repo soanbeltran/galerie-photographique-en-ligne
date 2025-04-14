@@ -272,4 +272,24 @@ footer p {
     margin-left: 10px;
     font-weight: bold;
 }
+#cart-list {
+    list-style: none;
+    padding: 0;
+}
 
+#cart-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 10px;
+    margin: 5px 0;
+    background-color: #f9f9f9;
+    border-radius: 6px;
+}
+
+.remove-item {
+    color: red;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 10px;
+}
