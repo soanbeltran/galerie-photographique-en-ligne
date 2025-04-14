@@ -108,3 +108,33 @@ footer {
     text-align: center;
     padding: 15px 0;
 }
+#sidebar-panier {
+    position: fixed;
+    top: 100px;
+    right: 0;
+    width: 250px;
+    background: #fefefe;
+    border-left: 2px solid #ccc;
+    padding: 20px;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+    height: calc(100% - 100px);
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+#sidebar-panier h3 {
+    margin-top: 0;
+    font-size: 1.2em;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    #sidebar-panier {
+        width: 100%;
+        height: auto;
+        position: static;
+        border-left: none;
+        box-shadow: none;
+    }
+}
