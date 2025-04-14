@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Galerie en Ligne de Soan BELTRAN</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
@@ -17,18 +17,18 @@
                     <li><a href="#accueil">Accueil</a></li>
                     <li><a href="#galerie">Galerie</a></li>
                     <li><a href="#apropos">À propos</a></li>
+                    <li><a href="#contact">Me contacter</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- Section Accueil avec Arbre Illustré -->
+    <!-- Section Accueil -->
     <section id="accueil" class="section accueil">
         <div class="container">
             <h2 class="fade-in">Bienvenue dans notre Galerie de Photos de tous styles</h2>
             <p class="fade-in">Explorez ma collection de photos numériques disponibles à l'achat. Un monde de nature à portée de main.</p>
         </div>
-        <!-- Illustration arbre -->
         <div class="tree-illustration">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100" height="100">
                 <circle cx="100" cy="60" r="40" fill="#8e9a58"/>
@@ -39,7 +39,7 @@
         </div>
     </section>
 
-    <!-- Section Galerie avec effet hover -->
+    <!-- Section Galerie -->
     <section id="galerie" class="section galerie">
         <div class="container">
             <h2>Galerie</h2>
@@ -68,28 +68,48 @@
         </div>
     </section>
 
-    <!-- 🛒 Section Panier -->
+    <!-- Section Panier -->
     <section id="panier" class="section panier">
         <div class="container">
             <h2>🛒 Mon Panier</h2>
             <ul id="cart-list"></ul>
             <p>Total : <span id="cart-total">0.00</span> €</p>
+            <p><small>(Cliquez sur un article pour le retirer du panier)</small></p>
         </div>
     </section>
 
-    <!-- Fenêtre modale pour afficher l'image en grand -->
-    <div id="modal" class="modal">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <img id="modal-img" class="modal-content" alt="Image agrandie">
-    </div>
-
-    <!-- Section À propos avec effet fade -->
+    <!-- Section À propos -->
     <section id="apropos" class="section apropos">
         <div class="container">
             <h2 class="fade-in">À propos</h2>
             <p class="fade-in">Nous proposons des photos numériques de qualité professionnelle, capturées dans des paysages naturels à travers le monde.</p>
         </div>
     </section>
+
+    <!-- 📨 Section Me Contacter -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <h2>📬 Me Contacter</h2>
+            <form action="mailto:ton-email@example.com" method="post" enctype="text/plain">
+                <label for="nom">Nom :</label>
+                <input type="text" id="nom" name="nom" required>
+
+                <label for="email">Email :</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Message :</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+
+                <button type="submit">Envoyer</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Modale -->
+    <div id="modal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img id="modal-img" class="modal-content" alt="Image agrandie">
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -100,7 +120,6 @@
 
     <!-- JavaScript -->
     <script>
-        // Fonction pour ouvrir la modale avec l'image en grand
         function openModal(imageSrc) {
             const modal = document.getElementById("modal");
             const modalImg = document.getElementById("modal-img");
@@ -108,13 +127,12 @@
             modalImg.src = imageSrc;
         }
 
-        // Fonction pour fermer la modale
         function closeModal() {
             const modal = document.getElementById("modal");
             modal.style.display = "none";
         }
 
-        // 🧠 Fonctions de panier
+        // Panier
         let cart = [];
         let total = 0;
 
@@ -128,16 +146,24 @@
             const cartList = document.getElementById("cart-list");
             const totalElement = document.getElementById("cart-total");
 
-            // Vide l'affichage actuel
             cartList.innerHTML = "";
 
-            cart.forEach(item => {
+            cart.forEach((item, index) => {
                 const li = document.createElement("li");
                 li.textContent = `${item.name} - ${item.price.toFixed(2)} €`;
+                li.style.cursor = "pointer";
+                li.title = "Cliquez pour retirer";
+                li.onclick = () => removeFromCart(index);
                 cartList.appendChild(li);
             });
 
             totalElement.textContent = total.toFixed(2);
+        }
+
+        function removeFromCart(index) {
+            total -= cart[index].price;
+            cart.splice(index, 1);
+            updateCartDisplay();
         }
     </script>
 
