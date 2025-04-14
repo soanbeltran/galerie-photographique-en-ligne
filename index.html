@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Galerie en Ligne de Soan BELTRAN</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: linear-gradient(to bottom right, #4facfe, #43e97b);
+      background: linear-gradient(to bottom right, #2196f3, #4caf50); /* Dégradé bleu → vert */
+      color: #fff;
     }
 
     header {
-      background-color: rgba(0, 0, 0, 0.7);
-      color: white;
-      padding: 20px 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 20px;
       text-align: center;
     }
 
@@ -24,31 +24,64 @@
     }
 
     header p {
-      margin: 5px 0 0;
+      margin: 10px 0 0;
+      font-size: 1.2em;
     }
 
     nav ul {
       list-style: none;
       padding: 0;
+      margin: 10px 0 0;
       display: flex;
-      flex-wrap: wrap;
       justify-content: center;
-      margin-top: 10px;
+      flex-wrap: wrap;
     }
 
-    nav li {
-      margin: 0 10px;
+    nav ul li {
+      margin: 10px;
     }
 
-    nav a {
+    nav ul li a {
       color: white;
       text-decoration: none;
       font-weight: bold;
+      padding: 5px 10px;
+      background-color: #4caf50;
+      border-radius: 5px;
     }
 
-    section {
+    nav ul li a:hover {
+      background-color: #45a049;
+    }
+
+    .section {
       padding: 40px 20px;
       text-align: center;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .photo-card {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 15px;
+      border-radius: 10px;
+      max-width: 300px;
+      display: none;
+    }
+
+    .photo-card.active {
+      display: block;
+    }
+
+    .photo-card img {
+      width: 100%;
+      border-radius: 10px;
+      cursor: pointer;
     }
 
     .filter-buttons {
@@ -69,75 +102,80 @@
       background-color: #45a049;
     }
 
-    .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
-
-    .photo-card {
-      background-color: white;
-      border-radius: 10px;
-      padding: 10px;
-      max-width: 250px;
-      display: none;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-    }
-
-    .photo-card.active {
-      display: block;
-    }
-
-    .photo-card img {
-      width: 100%;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
     .modal {
       display: none;
       position: fixed;
       z-index: 1000;
-      left: 0; top: 0;
-      width: 100%; height: 100%;
-      background-color: rgba(0, 0, 0, 0.8);
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
     }
 
     .modal-content {
-      margin: 5% auto;
-      display: block;
       max-width: 80%;
+      max-height: 80%;
     }
 
     .close {
       position: absolute;
-      top: 20px; right: 40px;
-      color: white;
-      font-size: 30px;
+      top: 20px;
+      right: 30px;
+      color: #fff;
+      font-size: 40px;
       cursor: pointer;
     }
 
     footer {
-      background-color: rgba(0, 0, 0, 0.7);
-      color: white;
+      background-color: rgba(0, 0, 0, 0.6);
+      text-align: center;
       padding: 20px;
+    }
+
+    /* Formulaire de contact */
+    .contact-section {
+      background: rgba(255,255,255,0.1);
+      padding: 40px 20px;
       text-align: center;
     }
 
-    @media (max-width: 600px) {
-      .gallery {
-        flex-direction: column;
-        align-items: center;
-      }
+    .contact-form {
+      max-width: 500px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+    }
 
-      nav ul {
-        flex-direction: column;
-      }
+    .contact-form label {
+      text-align: left;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
 
-      nav li {
-        margin: 5px 0;
-      }
+    .contact-form input,
+    .contact-form textarea {
+      padding: 10px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1em;
+    }
+
+    .contact-form button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 1em;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .contact-form button:hover {
+      background-color: #45a049;
     }
   </style>
 </head>
@@ -152,19 +190,17 @@
       <li><a href="#galerie">Galerie</a></li>
       <li><a href="#apropos">À propos</a></li>
       <li><a href="#contact">Me contacter</a></li>
-
     </ul>
   </nav>
 </header>
 
-<section id="accueil">
+<section id="accueil" class="section">
   <h2>Bienvenue dans notre Galerie de Photos Naturelles</h2>
   <p>Explorez notre collection de photos numériques disponibles à l'achat. Un monde de nature à portée de main.</p>
 </section>
 
-<section id="galerie">
+<section id="galerie" class="section">
   <h2>Galerie</h2>
-
   <div class="filter-buttons">
     <button onclick="filterPhotos('all')">Toutes</button>
     <button onclick="filterPhotos('nature')">🌿 Nature</button>
@@ -174,50 +210,50 @@
 
   <div class="gallery">
     <div class="photo-card nature active">
-      <img src="soleil.JPG" alt="" class="image-zoom" onclick="openModal('soleil.JPG')">
+      <img src="soleil.JPG" alt="Soleil" onclick="openModal('soleil.JPG')">
       <p>Coucher de soleil en Corse</p>
       <button>Acheter à 1€</button>
     </div>
     <div class="photo-card mouvement active">
-      <img src="photo-voiture.jpg" alt="" class="image-zoom" onclick="openModal('photo-voiture.jpg')">
+      <img src="photo-voiture.jpg" alt="Voiture" onclick="openModal('photo-voiture.jpg')">
       <p>Porche flou de mouvement artistique</p>
       <button>Acheter à 1€</button>
     </div>
     <div class="photo-card ville active">
-      <img src="photo-poubelle.jpg" alt="" class="image-zoom" onclick="openModal('photo-poubelle.jpg')">
+      <img src="photo-poubelle.jpg" alt="Ville" onclick="openModal('photo-poubelle.jpg')">
       <p>Photo de rue</p>
       <button>Acheter à 1€</button>
     </div>
     <div class="photo-card mouvement active">
-      <img src="photo-toro.JPG" alt="" class="image-zoom" onclick="openModal('photo-toro.JPG')">
+      <img src="photo-toro.JPG" alt="Toro" onclick="openModal('photo-toro.JPG')">
       <p>Course camarguaise</p>
       <button>Acheter à 1€</button>
     </div>
   </div>
 </section>
 
-<div id="modal" class="modal">
-  <span class="close" onclick="closeModal()">&times;</span>
+<div id="modal" class="modal" onclick="closeModal()">
+  <span class="close">&times;</span>
   <img id="modal-img" class="modal-content" alt="Image agrandie">
 </div>
 
-<section id="apropos">
+<section id="apropos" class="section">
   <h2>À propos</h2>
   <p>Nous proposons des photos numériques de qualité professionnelle, capturées dans des paysages naturels à travers le monde.</p>
 </section>
-<section id="contact">
+
+<section id="contact" class="contact-section">
   <h2>Contactez-moi</h2>
-  <form action="https://formsubmit.co/beltransoan@email.com" method="POST">
+  <form action="https://formsubmit.co/tonadresse@email.com" method="POST" class="contact-form">
     <input type="hidden" name="_captcha" value="false">
-    
-    <label for="name">Nom :</label><br>
-    <input type="text" id="name" name="name" required><br><br>
+    <label for="name">Nom :</label>
+    <input type="text" id="name" name="name" required>
 
-    <label for="email">Email :</label><br>
-    <input type="email" id="email" name="email" required><br><br>
+    <label for="email">Email :</label>
+    <input type="email" id="email" name="email" required>
 
-    <label for="message">Message :</label><br>
-    <textarea id="message" name="message" rows="5" required></textarea><br><br>
+    <label for="message">Message :</label>
+    <textarea id="message" name="message" rows="5" required></textarea>
 
     <button type="submit">Envoyer</button>
   </form>
@@ -231,22 +267,20 @@
   function openModal(imageSrc) {
     const modal = document.getElementById("modal");
     const modalImg = document.getElementById("modal-img");
-    modal.style.display = "block";
+    modal.style.display = "flex";
     modalImg.src = imageSrc;
   }
 
   function closeModal() {
-    const modal = document.getElementById("modal");
-    modal.style.display = "none";
+    document.getElementById("modal").style.display = "none";
   }
 
   function filterPhotos(category) {
     const cards = document.querySelectorAll('.photo-card');
     cards.forEach(card => {
+      card.classList.remove('active');
       if (category === 'all' || card.classList.contains(category)) {
         card.classList.add('active');
-      } else {
-        card.classList.remove('active');
       }
     });
   }
