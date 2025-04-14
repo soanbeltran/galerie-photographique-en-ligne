@@ -1,277 +1,72 @@
-/* RESET DE BASE */
-* {
+body {
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
-/* Corps du site */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-    line-height: 1.6;
-}
-
-/* Conteneur principal */
-.container {
-    width: 80%;
-    margin: 0 auto;
-}
-
-/* En-tête */
 header {
-    background-color: #3c9c75;
+    background: #2c3e50;
     color: white;
     padding: 20px 0;
 }
 
-header h1 {
-    font-size: 2.5em;
-    text-align: center;
-    letter-spacing: 3px;
-    margin-bottom: 10px;
-}
-
-nav {
+header .container {
     display: flex;
-    justify-content: center;
-    margin-top: 10px;
+    justify-content: space-between;
+    align-items: center;
 }
 
 nav ul {
     list-style: none;
     display: flex;
     gap: 20px;
+    padding: 0;
+    margin: 0;
 }
 
 nav a {
-    text-decoration: none;
     color: white;
-    font-size: 1.2em;
-    font-weight: bold;
+    text-decoration: none;
 }
 
-nav a:hover {
-    text-decoration: underline;
-}
-
-/* Sections */
 .section {
-    padding: 60px 0;
-    text-align: center;
-}
-
-h2 {
-    font-size: 2.5em;
-    color: #3c9c75;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-}
-
-/* Section Accueil */
-.accueil {
-    background-color: #e0f7fa;
-}
-
-/* Section Galerie */
-.galerie {
-    background-color: #ffffff;
+    padding: 40px 20px;
 }
 
 .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 30px;
-    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .photo-card {
-    background-color: #f9f9f9;
-    padding: 20px;
+    width: 200px;
+    border: 1px solid #ddd;
+    padding: 10px;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    text-align: left;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.photo-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    background: #fff;
 }
 
 .photo-card img {
     width: 100%;
-    border-radius: 8px;
-    margin-bottom: 15px;
-}
-
-.photo-card p {
-    margin: 10px 0;
-    font-size: 1.1em;
-    color: #555;
+    border-radius: 6px;
 }
 
 button {
-    width: 100%;
-    padding: 12px 20px;
-    background-color: #3c9c75;
+    margin-top: 10px;
+    padding: 8px 12px;
+    background-color: #27ae60;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     cursor: pointer;
-    font-size: 1.1em;
-    transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #2f7e57;
+    background-color: #219150;
 }
 
-/* Section À propos */
-.apropos {
-    background-color: #e8f5e9;
-}
-
-/* Footer */
-footer {
-    background-color: #3c9c75;
-    color: white;
-    padding: 20px 0;
-    text-align: center;
-    margin-top: 40px;
-}
-
-footer p {
-    font-size: 1.1em;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    header h1 {
-        font-size: 2em;
-    }
-
-    nav ul {
-        gap: 10px;
-    }
-
-    .gallery {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    }
-
-    h2 {
-        font-size: 2em;
-    }
-}
-
-@media (max-width: 480px) {
-    header h1 {
-        font-size: 1.8em;
-    }
-
-    nav a {
-        font-size: 1em;
-    }
-}
-/* Fenêtre modale */
-.modal {
-    display: none; /* Masquer la modale par défaut */
-    position: fixed;
-    z-index: 1; /* Placer la modale au-dessus des autres éléments */
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8); /* Fond sombre */
-    overflow: auto; /* Activer le défilement si nécessaire */
-    padding-top: 60px;
-}
-
-/* Image dans la modale */
-.modal-content {
-    margin: auto;
-    display: block;
-    max-width: 80%;
-    max-height: 80%;
-    object-fit: contain; /* Pour que l'image garde son ratio */
-}
-
-/* Bouton de fermeture */
-.close {
-    color: white;
-    position: absolute;
-    top: 10px;
-    right: 25px;
-    font-size: 36px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.close:hover,
-.close:focus {
-    color: #ddd;
-    text-decoration: none;
-    cursor: pointer;
-}
-.panier {
-  background-color: #f0f0f0;
-  padding: 20px;
-  margin-top: 40px;
-  border-radius: 10px;
-}
-
-#cart-list li {
-  margin: 5px 0;
-}
-.section.contact form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.section.contact input,
-.section.contact textarea {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 16px;
-}
-
-.section.contact button {
-    background-color: #8e9a58;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.section.contact button:hover {
-    background-color: #6f7944;
-}
-#cart-list {
-    list-style: none;
-    padding-left: 0;
-}
-
-#cart-list li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 6px 10px;
-    margin: 5px 0;
-    background: #f0f0f0;
-    border-radius: 8px;
-}
-
-.remove-item {
-    color: red;
-    cursor: pointer;
-    margin-left: 10px;
-    font-weight: bold;
-}
 #cart-list {
     list-style: none;
     padding: 0;
@@ -281,15 +76,35 @@ footer p {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 6px 10px;
-    margin: 5px 0;
-    background-color: #f9f9f9;
-    border-radius: 6px;
+    background: #f2f2f2;
+    margin: 6px 0;
+    padding: 8px 10px;
+    border-radius: 5px;
 }
 
 .remove-item {
     color: red;
     cursor: pointer;
-    font-size: 16px;
-    margin-left: 10px;
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    gap: 10px;
+}
+
+input, textarea {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+footer {
+    background: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
 }
