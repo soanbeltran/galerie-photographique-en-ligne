@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerie en Ligne de Soan BELTRAN</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- En-tête -->
+    <header>
+        <div class="container">
+            <h1>Ma Galerie Naturelle</h1>
+            <nav>
+                <ul>
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#galerie">Galerie</a></li>
+                    <li><a href="#apropos">À propos</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Section Accueil avec Arbre Illustré -->
+    <section id="accueil" class="section accueil">
+        <div class="container">
+            <h2 class="fade-in">Bienvenue dans notre Galerie de Photos Naturelles</h2>
+            <p class="fade-in">Explorez notre collection de photos numériques disponibles à l'achat. Un monde de nature à portée de main.</p>
+        </div>
+        <!-- Illustration arbre -->
+        <div class="tree-illustration">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100" height="100">
+                <circle cx="100" cy="60" r="40" fill="#8e9a58"/>
+                <rect x="90" y="100" width="20" height="40" fill="#4e3b31"/>
+                <circle cx="50" cy="80" r="30" fill="#8e9a58"/>
+                <circle cx="150" cy="80" r="30" fill="#8e9a58"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Section Galerie avec effet hover -->
+    <section id="galerie" class="section galerie">
+        <div class="container">
+            <h2>Galerie</h2>
+            <div class="gallery">
+                <div class="photo-card">
+                    <img src="photo-toro.JPG" alt="Photo 1" class="image-zoom" onclick="openModal('photo-toro.JPG')">
+                    <p>course carmaguaise</p>
+                    <button>Acheter à 1€</button>
+                </div>
+                <div class="photo-card">
+                    <img src="photo-voiture.jpg" alt="Photo 2" class="image-zoom" onclick="openModal('photo-voiture.jpg')">
+                    <p>porche flou de mouvement artistique</p>
+                    <button>Acheter à 1€</button>
+                </div>
+                <div class="photo-card">
+                    <img src="photo-poubelle.jpg" alt="Photo 3" class="image-zoom" onclick="openModal('photo-poubelle.jpg')">
+                    <p>photo de rue</p>
+                    <button>Acheter à 1€</button>
+                </div>
+                <div class="photo-card">
+                    <img src="soleil.JPG" alt="Photo 4" class="image-zoom" onclick="openModal('soleil.JPG')">
+                    <p>coucher de soleil en corse</p>
+                    <button>Acheter à 1€</button>
+                </div>
+                <!-- Ajouter d'autres photos ici -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Fenêtre modale pour afficher l'image en grand -->
+    <div id="modal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img id="modal-img" class="modal-content" alt="Image agrandie">
+    </div>
+
+    <!-- Section À propos avec effet fade -->
+    <section id="apropos" class="section apropos">
+        <div class="container">
+            <h2 class="fade-in">À propos</h2>
+            <p class="fade-in">Nous proposons des photos numériques de qualité professionnelle, capturées dans des paysages naturels à travers le monde.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Ma Galerie Naturelle | Tous droits réservés</p>
+        </div>
+    </footer>
+
+    <script>
+        // Fonction pour ouvrir la modale avec l'image en grand
+        function openModal(imageSrc) {
+            const modal = document.getElementById("modal");
+            const modalImg = document.getElementById("modal-img");
+            modal.style.display = "block";
+            modalImg.src = imageSrc;
+        }
+
+        // Fonction pour fermer la modale
+        function closeModal() {
+            const modal = document.getElementById("modal");
+            modal.style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
