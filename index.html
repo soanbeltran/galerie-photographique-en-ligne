@@ -46,29 +46,34 @@
             <div class="gallery">
                 <div class="photo-card">
                     <img src="https://github.com/user-attachments/assets/054fbe66-ed64-4bf1-a8d0-9422caa653e4" alt="Photo 1" class="image-zoom" onclick="openModal('https://github.com/user-attachments/assets/054fbe66-ed64-4bf1-a8d0-9422caa653e4')">
-                    <p>course carmaguaise 
-                    </p>
-                    <!-- Exemple pour la photo 1 -->
-<button onclick="addToCart('Course camarguaise', 1)">Acheter à 1€</button>
-
+                    <p>course camarguaise</p>
+                    <button onclick="addToCart('course camarguaise', 1)">Acheter à 1€</button>
                 </div>
                 <div class="photo-card">
                     <img src="https://github.com/user-attachments/assets/d31467c4-17bd-48bf-9d9c-dce14dccf5a5" alt="Photo 2" class="image-zoom" onclick="openModal('https://github.com/user-attachments/assets/d31467c4-17bd-48bf-9d9c-dce14dccf5a5')">
                     <p>porche flou de mouvement artistique</p>
-                    <button>Acheter à 1€</button>
+                    <button onclick="addToCart('porche flou', 1)">Acheter à 1€</button>
                 </div>
                 <div class="photo-card">
                     <img src="https://github.com/user-attachments/assets/e34aaaa9-9eb1-4a86-9479-efb972d2d00e" alt="Photo 3" class="image-zoom" onclick="openModal('https://github.com/user-attachments/assets/e34aaaa9-9eb1-4a86-9479-efb972d2d00e')">
                     <p>photo de rue de poubelle de nuit</p>
-                    <button>Acheter à 1€</button>
+                    <button onclick="addToCart('poubelle de nuit', 1)">Acheter à 1€</button>
                 </div>
                 <div class="photo-card">
                     <img src="https://github.com/user-attachments/assets/26856d65-234e-4b21-9e5d-bbb2478c13b4" alt="Photo 4" class="image-zoom" onclick="openModal('https://github.com/user-attachments/assets/26856d65-234e-4b21-9e5d-bbb2478c13b4')">
-                    <p>coucher de soleil en corse sur le méditérrannée</p>
-                    <button>Acheter à 1€</button>
+                    <p>coucher de soleil en corse sur le méditerranée</p>
+                    <button onclick="addToCart('coucher de soleil en corse', 1)">Acheter à 1€</button>
                 </div>
-                <!-- Ajouter d'autres photos ici -->
             </div>
+        </div>
+    </section>
+
+    <!-- 🛒 Section Panier -->
+    <section id="panier" class="section panier">
+        <div class="container">
+            <h2>🛒 Mon Panier</h2>
+            <ul id="cart-list"></ul>
+            <p>Total : <span id="cart-total">0.00</span> €</p>
         </div>
     </section>
 
@@ -77,14 +82,6 @@
         <span class="close" onclick="closeModal()">&times;</span>
         <img id="modal-img" class="modal-content" alt="Image agrandie">
     </div>
-<!-- Section Panier -->
-<section id="panier" class="section panier">
-  <div class="container">
-    <h2>🛒 Mon Panier</h2>
-    <ul id="cart-list"></ul>
-    <p>Total : <span id="cart-total">0</span> €</p>
-  </div>
-</section>
 
     <!-- Section À propos avec effet fade -->
     <section id="apropos" class="section apropos">
@@ -101,6 +98,7 @@
         </div>
     </footer>
 
+    <!-- JavaScript -->
     <script>
         // Fonction pour ouvrir la modale avec l'image en grand
         function openModal(imageSrc) {
@@ -114,6 +112,32 @@
         function closeModal() {
             const modal = document.getElementById("modal");
             modal.style.display = "none";
+        }
+
+        // 🧠 Fonctions de panier
+        let cart = [];
+        let total = 0;
+
+        function addToCart(productName, price) {
+            cart.push({ name: productName, price: price });
+            total += price;
+            updateCartDisplay();
+        }
+
+        function updateCartDisplay() {
+            const cartList = document.getElementById("cart-list");
+            const totalElement = document.getElementById("cart-total");
+
+            // Vide l'affichage actuel
+            cartList.innerHTML = "";
+
+            cart.forEach(item => {
+                const li = document.createElement("li");
+                li.textContent = `${item.name} - ${item.price.toFixed(2)} €`;
+                cartList.appendChild(li);
+            });
+
+            totalElement.textContent = total.toFixed(2);
         }
     </script>
 
