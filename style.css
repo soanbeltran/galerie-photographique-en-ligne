@@ -251,3 +251,25 @@ footer p {
 .section.contact button:hover {
     background-color: #6f7944;
 }
+#cart-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+#cart-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 10px;
+    margin: 5px 0;
+    background: #f0f0f0;
+    border-radius: 8px;
+}
+
+.remove-item {
+    color: red;
+    cursor: pointer;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
