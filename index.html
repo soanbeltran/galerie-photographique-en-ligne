@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galerie en Ligne de Soan BELTRAN</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -18,6 +18,7 @@
                     <li><a href="#galerie">Galerie</a></li>
                     <li><a href="#apropos">À propos</a></li>
                     <li><a href="#contact">Me contacter</a></li>
+                    <li><a href="#panier">🛒 Panier</a></li>
                 </ul>
             </nav>
         </div>
@@ -29,6 +30,7 @@
             <h2 class="fade-in">Bienvenue dans notre Galerie de Photos de tous styles</h2>
             <p class="fade-in">Explorez ma collection de photos numériques disponibles à l'achat. Un monde de nature à portée de main.</p>
         </div>
+        <!-- Illustration arbre -->
         <div class="tree-illustration">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100" height="100">
                 <circle cx="100" cy="60" r="40" fill="#8e9a58"/>
@@ -39,61 +41,60 @@
         </div>
     </section>
 
-    <!-- Section Galerie -->
+    <!-- Galerie -->
     <section id="galerie" class="section galerie">
         <div class="container">
             <h2>Galerie</h2>
             <div class="gallery">
                 <div class="photo-card">
-                    <img src="https://github.com/user-attachments/assets/054fbe66-ed64-4bf1-a8d0-9422caa653e4" alt="Photo 1" class="image-zoom" onclick="openModal('https://github.com/user-attachments/assets/054fbe66-ed64-4bf1-a8d0-9422caa653e4')">
-                    <p>course camarguaise</p>
-                    <button onclick="addToCart('course camarguaise', 1)">Acheter à 1€</button>
+                    <img src="https://github.com/user-attachments/assets/054fbe66-ed64-4bf1-a8d0-9422caa653e4" alt="Photo 1" class="image-zoom">
+                    <p>Course camarguaise</p>
+                    <button onclick="addToCart('Course camarguaise', 1)">Acheter à 1€</button>
                 </div>
                 <div class="photo-card">
-                    <img src="https://github.com/user-attachments/assets/d31467c4-17bd-48bf-9d9c-dce14dccf5a5" alt="Photo 2" class="image-zoom" onclick="openModal('https://github.com/user-attachments/assets/d31467c4-17bd-48bf-9d9c-dce14dccf5a5')">
-                    <p>porche flou de mouvement artistique</p>
-                    <button onclick="addToCart('porche flou', 1)">Acheter à 1€</button>
+                    <img src="https://github.com/user-attachments/assets/d31467c4-17bd-48bf-9d9c-dce14dccf5a5" alt="Photo 2" class="image-zoom">
+                    <p>Porche flou artistique</p>
+                    <button onclick="addToCart('Porche flou artistique', 1)">Acheter à 1€</button>
                 </div>
                 <div class="photo-card">
-                    <img src="https://github.com/user-attachments/assets/e34aaaa9-9eb1-4a86-9479-efb972d2d00e" alt="Photo 3" class="image-zoom" onclick="openModal('https://github.com/user-attachments/assets/e34aaaa9-9eb1-4a86-9479-efb972d2d00e')">
-                    <p>photo de rue de poubelle de nuit</p>
-                    <button onclick="addToCart('poubelle de nuit', 1)">Acheter à 1€</button>
+                    <img src="https://github.com/user-attachments/assets/e34aaaa9-9eb1-4a86-9479-efb972d2d00e" alt="Photo 3" class="image-zoom">
+                    <p>Poubelle de nuit</p>
+                    <button onclick="addToCart('Poubelle de nuit', 1)">Acheter à 1€</button>
                 </div>
                 <div class="photo-card">
-                    <img src="https://github.com/user-attachments/assets/26856d65-234e-4b21-9e5d-bbb2478c13b4" alt="Photo 4" class="image-zoom" onclick="openModal('https://github.com/user-attachments/assets/26856d65-234e-4b21-9e5d-bbb2478c13b4')">
-                    <p>coucher de soleil en corse sur le méditerranée</p>
-                    <button onclick="addToCart('coucher de soleil en corse', 1)">Acheter à 1€</button>
+                    <img src="https://github.com/user-attachments/assets/26856d65-234e-4b21-9e5d-bbb2478c13b4" alt="Photo 4" class="image-zoom">
+                    <p>Coucher de soleil en Corse</p>
+                    <button onclick="addToCart('Coucher de soleil en Corse', 1)">Acheter à 1€</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section Panier -->
+    <!-- Panier -->
     <section id="panier" class="section panier">
         <div class="container">
-            <h2>🛒 Mon Panier</h2>
+            <h2>Votre panier</h2>
             <ul id="cart-list"></ul>
-            <p>Total : <span id="cart-total">0.00</span> €</p>
-            <p><small>(Cliquez sur un article pour le retirer du panier)</small></p>
+            <p>Total : <span id="cart-total">0</span> €</p>
         </div>
     </section>
 
-    <!-- Section À propos -->
+    <!-- À propos -->
     <section id="apropos" class="section apropos">
         <div class="container">
-            <h2 class="fade-in">À propos</h2>
-            <p class="fade-in">Nous proposons des photos numériques de qualité professionnelle, capturées dans des paysages naturels à travers le monde.</p>
+            <h2>À propos</h2>
+            <p>Nous proposons des photos numériques de qualité professionnelle, capturées dans des paysages naturels à travers le monde.</p>
         </div>
     </section>
 
-    <!-- 📨 Section Me Contacter -->
+    <!-- Me contacter -->
     <section id="contact" class="section contact">
         <div class="container">
-            <h2>📬 Me Contacter</h2>
-            <form action="mailto:beltransoan@gmail.com" method="post" enctype="text/plain">
+            <h2>Me contacter</h2>
+            <form>
                 <label for="nom">Nom :</label>
                 <input type="text" id="nom" name="nom" required>
-
+                
                 <label for="email">Email :</label>
                 <input type="email" id="email" name="email" required>
 
@@ -105,12 +106,6 @@
         </div>
     </section>
 
-    <!-- Modale -->
-    <div id="modal" class="modal">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <img id="modal-img" class="modal-content" alt="Image agrandie">
-    </div>
-
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -118,27 +113,20 @@
         </div>
     </footer>
 
-    <!-- JavaScript -->
+    <!-- Script panier -->
     <script>
-        function openModal(imageSrc) {
-            const modal = document.getElementById("modal");
-            const modalImg = document.getElementById("modal-img");
-            modal.style.display = "block";
-            modalImg.src = imageSrc;
-        }
-
-        function closeModal() {
-            const modal = document.getElementById("modal");
-            modal.style.display = "none";
-        }
-
-        // Panier
         let cart = [];
         let total = 0;
 
-        function addToCart(productName, price) {
-            cart.push({ name: productName, price: price });
+        function addToCart(name, price) {
+            cart.push({ name, price });
             total += price;
+            updateCartDisplay();
+        }
+
+        function removeFromCart(index) {
+            total -= cart[index].price;
+            cart.splice(index, 1);
             updateCartDisplay();
         }
 
@@ -150,22 +138,25 @@
 
             cart.forEach((item, index) => {
                 const li = document.createElement("li");
-                li.textContent = `${item.name} - ${item.price.toFixed(2)} €`;
-                li.style.cursor = "pointer";
-                li.title = "Cliquez pour retirer";
-                li.onclick = () => removeFromCart(index);
+
+                const itemText = document.createElement("span");
+                itemText.textContent = `${item.name} - ${item.price.toFixed(2)} €`;
+
+                const removeBtn = document.createElement("span");
+                removeBtn.textContent = "❌";
+                removeBtn.classList.add("remove-item");
+                removeBtn.title = "Supprimer";
+                removeBtn.onclick = () => removeFromCart(index);
+
+                li.appendChild(itemText);
+                li.appendChild(removeBtn);
                 cartList.appendChild(li);
             });
 
             totalElement.textContent = total.toFixed(2);
         }
-
-        function removeFromCart(index) {
-            total -= cart[index].price;
-            cart.splice(index, 1);
-            updateCartDisplay();
-        }
     </script>
 
 </body>
 </html>
+
