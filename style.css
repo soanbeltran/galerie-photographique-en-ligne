@@ -214,3 +214,13 @@ footer p {
     text-decoration: none;
     cursor: pointer;
 }
+.panier {
+  background-color: #f0f0f0;
+  padding: 20px;
+  margin-top: 40px;
+  border-radius: 10px;
+}
+
+#cart-list li {
+  margin: 5px 0;
+}
