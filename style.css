@@ -224,3 +224,30 @@ footer p {
 #cart-list li {
   margin: 5px 0;
 }
+.section.contact form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.section.contact input,
+.section.contact textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.section.contact button {
+    background-color: #8e9a58;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.section.contact button:hover {
+    background-color: #6f7944;
+}
