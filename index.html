@@ -5,165 +5,138 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galerie en Ligne de Soan BELTRAN</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .filter-buttons {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .filter-buttons button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .filter-buttons button:hover {
+            background-color: #45a049;
+        }
+        .photo-card {
+            display: none;
+        }
+        .photo-card.active {
+            display: block;
+        }
+    </style>
 </head>
 <body>
 
-    <!-- En-tête -->
-    <header>
-        <div class="container">
-            <h1>Ma Galerie Naturelle</h1>
-            <nav>
-                <ul>
-                    <li><a href="#accueil">Accueil</a></li>
-                    <li><a href="#galerie">Galerie</a></li>
-                    <li><a href="#apropos">À propos</a></li>
-                    <li><a href="#contact">Me contacter</a></li>
-                    <li><a href="#panier">🛒 Panier</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+<header>
+    <div class="container">
+        <h1>Ma Galerie photographique</h1>
+        <nav>
+            <ul>
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#galerie">Galerie</a></li>
+                <li><a href="#apropos">À propos</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
 
-    <!-- Section Accueil -->
-    <section id="accueil" class="section accueil">
-        <div class="container">
-            <h2 class="fade-in">Bienvenue dans notre Galerie de Photos de tous styles</h2>
-            <p class="fade-in">Explorez ma collection de photos numériques disponibles à l'achat. Un monde de nature à portée de main.</p>
-        </div>
-        <!-- Illustration arbre -->
-        <div class="tree-illustration">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100" height="100">
-                <circle cx="100" cy="60" r="40" fill="#8e9a58"/>
-                <rect x="90" y="100" width="20" height="40" fill="#4e3b31"/>
-                <circle cx="50" cy="80" r="30" fill="#8e9a58"/>
-                <circle cx="150" cy="80" r="30" fill="#8e9a58"/>
-            </svg>
-        </div>
-    </section>
+<section id="accueil" class="section accueil">
+    <div class="container">
+        <h2 class="fade-in">Bienvenue dans notre Galerie de Photos Naturelles</h2>
+        <p class="fade-in">Explorez notre collection de photos numériques disponibles à l'achat. Un monde de nature à portée de main.</p>
+    </div>
+    <div class="tree-illustration">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100" height="100">
+            <circle cx="100" cy="60" r="40" fill="#8e9a58"/>
+            <rect x="90" y="100" width="20" height="40" fill="#4e3b31"/>
+            <circle cx="50" cy="80" r="30" fill="#8e9a58"/>
+            <circle cx="150" cy="80" r="30" fill="#8e9a58"/>
+        </svg>
+    </div>
+</section>
 
-    <!-- Galerie -->
-    <section id="galerie" class="section galerie">
-        <div class="container">
-            <h2>Galerie</h2>
-            <div class="gallery">
-                <div class="photo-card">
-                    <img src="https://github.com/user-attachments/assets/054fbe66-ed64-4bf1-a8d0-9422caa653e4" alt="Photo 1" class="image-zoom">
-                    <p>Course camarguaise</p>
-                    <button onclick="addToCart('Course camarguaise', 1)">Acheter à 1€</button>
-                </div>
-                <div class="photo-card">
-                    <img src="https://github.com/user-attachments/assets/d31467c4-17bd-48bf-9d9c-dce14dccf5a5" alt="Photo 2" class="image-zoom">
-                    <p>Porche flou artistique</p>
-                    <button onclick="addToCart('Porche flou artistique', 1)">Acheter à 1€</button>
-                </div>
-                <div class="photo-card">
-                    <img src="https://github.com/user-attachments/assets/e34aaaa9-9eb1-4a86-9479-efb972d2d00e" alt="Photo 3" class="image-zoom">
-                    <p>Poubelle de nuit</p>
-                    <button onclick="addToCart('Poubelle de nuit', 1)">Acheter à 1€</button>
-                </div>
-                <div class="photo-card">
-                    <img src="https://github.com/user-attachments/assets/26856d65-234e-4b21-9e5d-bbb2478c13b4" alt="Photo 4" class="image-zoom">
-                    <p>Coucher de soleil en Corse</p>
-                    <button onclick="addToCart('Coucher de soleil en Corse', 1)">Acheter à 1€</button>
-                </div>
+<section id="galerie" class="section galerie">
+    <div class="container">
+        <h2>Galerie</h2>
+
+        <div class="filter-buttons">
+            <button onclick="filterPhotos('all')">Toutes</button>
+            <button onclick="filterPhotos('nature')">🌿 Nature</button>
+            <button onclick="filterPhotos('ville')">🏙️ Ville</button>
+            <button onclick="filterPhotos('mouvement')">🚶‍♂️ Mouvement</button>
+        </div>
+
+        <div class="gallery">
+            <div class="photo-card nature active">
+                <img src="soleil.JPG" alt="" class="image-zoom" onclick="openModal('soleil.JPG')">
+                <p>Coucher de soleil en Corse</p>
+                <button>Acheter à 1€</button>
+            </div>
+            <div class="photo-card mouvement active">
+                <img src="photo-voiture.jpg" alt="" class="image-zoom" onclick="openModal('photo-voiture.jpg')">
+                <p>Porche flou de mouvement artistique</p>
+                <button>Acheter à 1€</button>
+            </div>
+            <div class="photo-card ville active">
+                <img src="photo-poubelle.jpg" alt="" class="image-zoom" onclick="openModal('photo-poubelle.jpg')">
+                <p>Photo de rue</p>
+                <button>Acheter à 1€</button>
+            </div>
+            <div class="photo-card mouvement active">
+                <img src="photo-toro.JPG" alt="" class="image-zoom" onclick="openModal('photo-toro.JPG')">
+                <p>Course camarguaise</p>
+                <button>Acheter à 1€</button>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Panier -->
-    <section id="panier" class="section panier">
-        <div class="container">
-            <h2>Votre panier</h2>
-            <ul id="cart-list"></ul>
-            <p>Total : <span id="cart-total">0</span> €</p>
-        </div>
-        <!-- Panier latéral -->
-<aside id="sidebar-panier">
-    <h3>Votre panier 🛒</h3>
-    <ul id="cart-list"></ul>
-    <p>Total : <span id="cart-total">0</span> €</p>
-</aside>
+<div id="modal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img id="modal-img" class="modal-content" alt="Image agrandie">
+</div>
 
-    </section>
+<section id="apropos" class="section apropos">
+    <div class="container">
+        <h2 class="fade-in">À propos</h2>
+        <p class="fade-in">Nous proposons des photos numériques de qualité professionnelle, capturées dans des paysages naturels à travers le monde.</p>
+    </div>
+</section>
 
-    <!-- À propos -->
-    <section id="apropos" class="section apropos">
-        <div class="container">
-            <h2>À propos</h2>
-            <p>Nous proposons des photos numériques de qualité professionnelle, capturées dans des paysages naturels à travers le monde.</p>
-        </div>
-    </section>
+<footer>
+    <div class="container">
+        <p>&copy; 2025 Ma Galerie Naturelle | Tous droits réservés</p>
+    </div>
+</footer>
 
-    <!-- Me contacter -->
-    <section id="contact" class="section contact">
-        <div class="container">
-            <h2>Me contacter</h2>
-            <form>
-                <label for="nom">Nom :</label>
-                <input type="text" id="nom" name="nom" required>
-                
-                <label for="email">Email :</label>
-                <input type="email" id="email" name="email" required>
+<script>
+    function openModal(imageSrc) {
+        const modal = document.getElementById("modal");
+        const modalImg = document.getElementById("modal-img");
+        modal.style.display = "block";
+        modalImg.src = imageSrc;
+    }
 
-                <label for="message">Message :</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
+    function closeModal() {
+        const modal = document.getElementById("modal");
+        modal.style.display = "none";
+    }
 
-                <button type="submit">Envoyer</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Ma Galerie Naturelle | Tous droits réservés</p>
-        </div>
-    </footer>
-
-    <!-- Script panier -->
-    <script>
-        let cart = [];
-        let total = 0;
-
-        function addToCart(name, price) {
-            cart.push({ name, price });
-            total += price;
-            updateCartDisplay();
-        }
-
-        function removeFromCart(index) {
-            total -= cart[index].price;
-            cart.splice(index, 1);
-            updateCartDisplay();
-        }
-
-        function updateCartDisplay() {
-            const cartList = document.getElementById("cart-list");
-            const totalElement = document.getElementById("cart-total");
-
-            cartList.innerHTML = "";
-
-            cart.forEach((item, index) => {
-                const li = document.createElement("li");
-
-                const itemText = document.createElement("span");
-                itemText.textContent = `${item.name} - ${item.price.toFixed(2)} €`;
-
-                const removeBtn = document.createElement("span");
-                removeBtn.textContent = "❌";
-                removeBtn.classList.add("remove-item");
-                removeBtn.title = "Supprimer";
-                removeBtn.onclick = () => removeFromCart(index);
-
-                li.appendChild(itemText);
-                li.appendChild(removeBtn);
-                cartList.appendChild(li);
-            });
-
-            totalElement.textContent = total.toFixed(2);
-        }
-    </script>
+    function filterPhotos(category) {
+        const cards = document.querySelectorAll('.photo-card');
+        cards.forEach(card => {
+            card.classList.remove('active');
+            if (category === 'all' || card.classList.contains(category)) {
+                card.classList.add('active');
+            }
+        });
+    }
+</script>
 
 </body>
 </html>
-
