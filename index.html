@@ -1,321 +1,237 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galerie en Ligne de Soan BELTRAN</title>
-    <style>
-        body {
-            background: linear-gradient(to bottom right, #00aaff, #00cc66);
-            margin: 0;
-            font-family: sans-serif;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Galerie en Ligne de Soan BELTRAN</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom right, #4facfe, #43e97b);
+    }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+    header {
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
 
-        header {
-            padding: 20px 0;
-            text-align: center;
-            color: white;
-        }
+    header h1 {
+      margin: 0;
+    }
 
-        header h1 {
-            margin-bottom: 5px;
-        }
+    header p {
+      margin: 5px 0 0;
+    }
 
-        .sous-titre {
-            font-size: 1.2em;
-            color: white;
-            margin-bottom: 10px;
-        }
+    nav ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 10px;
+    }
 
-        header nav ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
+    nav li {
+      margin: 0 10px;
+    }
 
-        header nav ul li {
-            margin: 10px;
-        }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
 
-        header nav ul li a {
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-        }
+    section {
+      padding: 40px 20px;
+      text-align: center;
+    }
 
-        .section {
-            padding: 40px 0;
-            color: white;
-        }
+    .filter-buttons {
+      margin: 20px 0;
+    }
 
-        .filter-buttons {
-            text-align: center;
-            margin: 20px 0;
-        }
+    .filter-buttons button {
+      margin: 0 10px;
+      padding: 10px 20px;
+      border: none;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+    }
 
-        .filter-buttons button {
-            margin: 10px;
-            padding: 10px 20px;
-            border: none;
-            background-color: #4CAF50;
-            color: white;
-            cursor: pointer;
-            border-radius: 5px;
-        }
+    .filter-buttons button:hover {
+      background-color: #45a049;
+    }
 
-        .filter-buttons button:hover {
-            background-color: #45a049;
-        }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
 
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
+    .photo-card {
+      background-color: white;
+      border-radius: 10px;
+      padding: 10px;
+      max-width: 250px;
+      display: none;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
 
-        .photo-card {
-            opacity: 0;
-            transform: scale(0.98);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-            pointer-events: none;
-            height: 0;
-            overflow: hidden;
-        }
+    .photo-card.active {
+      display: block;
+    }
 
-        .photo-card.active {
-            opacity: 1;
-            transform: scale(1);
-            pointer-events: auto;
-            height: auto;
-            margin-bottom: 20px;
-        }
+    .photo-card img {
+      width: 100%;
+      border-radius: 8px;
+      cursor: pointer;
+    }
 
-        .photo-card img {
-            width: 100%;
-            border-radius: 10px;
-        }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+    }
 
-        .photo-card button {
-            margin-top: 10px;
-            padding: 10px;
-            width: 100%;
-        }
+    .modal-content {
+      margin: 5% auto;
+      display: block;
+      max-width: 80%;
+    }
 
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 999;
-            padding-top: 60px;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.8);
-        }
+    .close {
+      position: absolute;
+      top: 20px; right: 40px;
+      color: white;
+      font-size: 30px;
+      cursor: pointer;
+    }
 
-        .modal-content {
-            margin: auto;
-            display: block;
-            max-width: 90%;
-            max-height: 80vh;
-        }
+    footer {
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
 
-        .close {
-            position: absolute;
-            top: 30px;
-            right: 40px;
-            color: white;
-            font-size: 40px;
-            cursor: pointer;
-        }
+    @media (max-width: 600px) {
+      .gallery {
+        flex-direction: column;
+        align-items: center;
+      }
 
-        .tree-illustration {
-            text-align: center;
-            margin-top: 20px;
-        }
+      nav ul {
+        flex-direction: column;
+      }
 
-        footer {
-            text-align: center;
-            padding: 20px 0;
-            color: white;
-        }
-
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            padding: 10px;
-            border-radius: 5px;
-            border: none;
-            font-size: 1em;
-        }
-
-        .contact-form button {
-            padding: 10px;
-            border: none;
-            background-color: #4CAF50;
-            color: white;
-            font-size: 1em;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .contact-form button:hover {
-            background-color: #45a049;
-        }
-
-        @media screen and (max-width: 600px) {
-            .filter-buttons button {
-                width: 100%;
-                margin-bottom: 10px;
-            }
-
-            header nav ul {
-                flex-direction: column;
-            }
-
-            .tree-illustration svg {
-                width: 80px;
-                height: 80px;
-            }
-
-            h1 {
-                font-size: 1.8em;
-            }
-        }
-    </style>
+      nav li {
+        margin: 5px 0;
+      }
+    }
+  </style>
 </head>
 <body>
 
 <header>
-    <div class="container">
-        <h1>Ma Galerie Naturelle</h1>
-        <p class="sous-titre">Bienvenue sur mon site</p>
-        <nav>
-            <ul>
-                <li><a href="#accueil">Accueil</a></li>
-                <li><a href="#galerie">Galerie</a></li>
-                <li><a href="#apropos">À propos</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="mailto:beltransoan@gmail.com">Me contacter</a></li>
-
-            </ul>
-        </nav>
-    </div>
+  <h1>Ma Galerie Naturelle</h1>
+  <p>Bienvenue sur mon site</p>
+  <nav>
+    <ul>
+      <li><a href="#accueil">Accueil</a></li>
+      <li><a href="#galerie">Galerie</a></li>
+      <li><a href="#apropos">À propos</a></li>
+      <li><a href="mailto:beltransoan@gmail.com">Me contacter</a></li>
+    </ul>
+  </nav>
 </header>
 
-<section id="accueil" class="section accueil">
-    <div class="container">
-        <h2>Bienvenue dans notre Galerie de Photos Naturelles</h2>
-        <p>Explorez notre collection de photos numériques disponibles à l'achat.</p>
-    </div>
-    <div class="tree-illustration">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100" height="100">
-            <circle cx="100" cy="60" r="40" fill="#8e9a58"/>
-            <rect x="90" y="100" width="20" height="40" fill="#4e3b31"/>
-            <circle cx="50" cy="80" r="30" fill="#8e9a58"/>
-            <circle cx="150" cy="80" r="30" fill="#8e9a58"/>
-        </svg>
-    </div>
+<section id="accueil">
+  <h2>Bienvenue dans notre Galerie de Photos Naturelles</h2>
+  <p>Explorez notre collection de photos numériques disponibles à l'achat. Un monde de nature à portée de main.</p>
 </section>
 
-<section id="galerie" class="section galerie">
-    <div class="container">
-        <h2>Galerie</h2>
-        <div class="filter-buttons">
-            <button onclick="filterPhotos('all')">Toutes</button>
-            <button onclick="filterPhotos('nature')">🌿 Nature</button>
-            <button onclick="filterPhotos('ville')">🏙️ Ville</button>
-            <button onclick="filterPhotos('mouvement')">🚶‍♂️ Mouvement</button>
-        </div>
+<section id="galerie">
+  <h2>Galerie</h2>
 
-        <div class="gallery">
-            <div class="photo-card nature active">
-                <img src="soleil.JPG" alt="" onclick="openModal('soleil.JPG')">
-                <p>Coucher de soleil en Corse</p>
-                <button>Acheter à 1€</button>
-            </div>
-            <div class="photo-card mouvement active">
-                <img src="photo-voiture.jpg" alt="" onclick="openModal('photo-voiture.jpg')">
-                <p>Porche flou</p>
-                <button>Acheter à 1€</button>
-            </div>
-            <div class="photo-card ville active">
-                <img src="photo-poubelle.jpg" alt="" onclick="openModal('photo-poubelle.jpg')">
-                <p>Photo de rue</p>
-                <button>Acheter à 1€</button>
-            </div>
-        </div>
+  <div class="filter-buttons">
+    <button onclick="filterPhotos('all')">Toutes</button>
+    <button onclick="filterPhotos('nature')">🌿 Nature</button>
+    <button onclick="filterPhotos('ville')">🏙️ Ville</button>
+    <button onclick="filterPhotos('mouvement')">🚶‍♂️ Mouvement</button>
+  </div>
+
+  <div class="gallery">
+    <div class="photo-card nature active">
+      <img src="soleil.JPG" alt="" class="image-zoom" onclick="openModal('soleil.JPG')">
+      <p>Coucher de soleil en Corse</p>
+      <button>Acheter à 1€</button>
     </div>
+    <div class="photo-card mouvement active">
+      <img src="photo-voiture.jpg" alt="" class="image-zoom" onclick="openModal('photo-voiture.jpg')">
+      <p>Porche flou de mouvement artistique</p>
+      <button>Acheter à 1€</button>
+    </div>
+    <div class="photo-card ville active">
+      <img src="photo-poubelle.jpg" alt="" class="image-zoom" onclick="openModal('photo-poubelle.jpg')">
+      <p>Photo de rue</p>
+      <button>Acheter à 1€</button>
+    </div>
+    <div class="photo-card mouvement active">
+      <img src="photo-toro.JPG" alt="" class="image-zoom" onclick="openModal('photo-toro.JPG')">
+      <p>Course camarguaise</p>
+      <button>Acheter à 1€</button>
+    </div>
+  </div>
 </section>
 
 <div id="modal" class="modal">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <img id="modal-img" class="modal-content" alt="Image agrandie">
+  <span class="close" onclick="closeModal()">&times;</span>
+  <img id="modal-img" class="modal-content" alt="Image agrandie">
 </div>
 
-<section id="apropos" class="section apropos">
-    <div class="container">
-        <h2>À propos</h2>
-        <p>Photos numériques de qualité professionnelle, capturées à travers le monde.</p>
-    </div>
-</section>
-
-<section id="contact" class="section contact">
-    <div class="container">
-        <h2>Contact</h2>
-        <p>Une question ? Une demande spéciale ? N'hésitez pas à m'écrire !</p>
-        <form class="contact-form">
-            <input type="text" name="nom" placeholder="Votre nom" required>
-            <input type="email" name="email" placeholder="Votre email" required>
-            <textarea name="message" rows="5" placeholder="Votre message" required></textarea>
-            <button type="submit">Envoyer</button>
-        </form>
-    </div>
+<section id="apropos">
+  <h2>À propos</h2>
+  <p>Nous proposons des photos numériques de qualité professionnelle, capturées dans des paysages naturels à travers le monde.</p>
 </section>
 
 <footer>
-    <div class="container">
-        <p>&copy; 2025 Ma Galerie Naturelle | Tous droits réservés</p>
-    </div>
+  <p>&copy; 2025 Ma Galerie Naturelle | Tous droits réservés</p>
 </footer>
 
 <script>
-    function openModal(imageSrc) {
-        const modal = document.getElementById("modal");
-        const modalImg = document.getElementById("modal-img");
-        modal.style.display = "block";
-        modalImg.src = imageSrc;
-    }
+  function openModal(imageSrc) {
+    const modal = document.getElementById("modal");
+    const modalImg = document.getElementById("modal-img");
+    modal.style.display = "block";
+    modalImg.src = imageSrc;
+  }
 
-    function closeModal() {
-        const modal = document.getElementById("modal");
-        modal.style.display = "none";
-    }
+  function closeModal() {
+    const modal = document.getElementById("modal");
+    modal.style.display = "none";
+  }
 
-    function filterPhotos(category) {
-        const cards = document.querySelectorAll('.photo-card');
-        cards.forEach(card => {
-            if (category === 'all' || card.classList.contains(category)) {
-                card.classList.add('active');
-            } else {
-                card.classList.remove('active');
-            }
-        });
-    }
+  function filterPhotos(category) {
+    const cards = document.querySelectorAll('.photo-card');
+    cards.forEach(card => {
+      if (category === 'all' || card.classList.contains(category)) {
+        card.classList.add('active');
+      } else {
+        card.classList.remove('active');
+      }
+    });
+  }
 </script>
 
 </body>
