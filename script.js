@@ -1,25 +1,24 @@
-function updateCartDisplay() {
-    const cartList = document.getElementById("cart-list");
-    const totalElement = document.getElementById("cart-total");
+<script>
+    function openModal(imageSrc) {
+        const modal = document.getElementById("modal");
+        const modalImg = document.getElementById("modal-img");
+        modal.style.display = "block";
+        modalImg.src = imageSrc;
+    }
 
-    cartList.innerHTML = "";
+    function closeModal() {
+        const modal = document.getElementById("modal");
+        modal.style.display = "none";
+    }
 
-    cart.forEach((item, index) => {
-        const li = document.createElement("li");
-
-        const itemText = document.createElement("span");
-        itemText.textContent = `${item.name} - ${item.price.toFixed(2)} €`;
-
-        const removeBtn = document.createElement("span");
-        removeBtn.textContent = "❌";
-        removeBtn.classList.add("remove-item");
-        removeBtn.title = "Supprimer";
-        removeBtn.onclick = () => removeFromCart(index);
-
-        li.appendChild(itemText);
-        li.appendChild(removeBtn);
-        cartList.appendChild(li);
-    });
-
-    totalElement.textContent = total.toFixed(2);
-}
+    function filterPhotos(category) {
+        const cards = document.querySelectorAll('.photo-card');
+        cards.forEach(card => {
+            if (category === 'all' || card.classList.contains(category)) {
+                card.classList.add('active');
+            } else {
+                card.classList.remove('active');
+            }
+        });
+    }
+</script>
