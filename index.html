@@ -4,13 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galerie en Ligne de Soan BELTRAN</title>
-    <link rel="stylesheet" href="style.css">
     <style>
         body {
             background: linear-gradient(to bottom right, #00aaff, #00cc66);
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-            background-size: cover;
             margin: 0;
             font-family: sans-serif;
         }
@@ -34,7 +30,6 @@
         .sous-titre {
             font-size: 1.2em;
             color: white;
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
             margin-bottom: 10px;
         }
 
@@ -105,7 +100,6 @@
 
         .photo-card img {
             width: 100%;
-            height: auto;
             border-radius: 10px;
         }
 
@@ -124,7 +118,6 @@
             top: 0;
             width: 100%;
             height: 100%;
-            overflow: auto;
             background-color: rgba(0,0,0,0.8);
         }
 
@@ -141,7 +134,6 @@
             right: 40px;
             color: white;
             font-size: 40px;
-            font-weight: bold;
             cursor: pointer;
         }
 
@@ -154,6 +146,35 @@
             text-align: center;
             padding: 20px 0;
             color: white;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            font-size: 1em;
+        }
+
+        .contact-form button {
+            padding: 10px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            background-color: #45a049;
         }
 
         @media screen and (max-width: 600px) {
@@ -175,35 +196,6 @@
                 font-size: 1.8em;
             }
         }
-        .contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.contact-form input,
-.contact-form textarea {
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
-    font-size: 1em;
-}
-
-.contact-form button {
-    padding: 10px;
-    border: none;
-    background-color: #4CAF50;
-    color: white;
-    font-size: 1em;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.contact-form button:hover {
-    background-color: #45a049;
-}
-
     </style>
 </head>
 <body>
@@ -217,24 +209,16 @@
                 <li><a href="#accueil">Accueil</a></li>
                 <li><a href="#galerie">Galerie</a></li>
                 <li><a href="#apropos">À propos</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </div>
-    <nav>
-    <ul>
-        <li><a href="#accueil">Accueil</a></li>
-        <li><a href="#galerie">Galerie</a></li>
-        <li><a href="#apropos">À propos</a></li>
-        <li><a href="#contact">Contact</a></li> <!-- 👈 AJOUT -->
-    </ul>
-</nav>
-
 </header>
 
 <section id="accueil" class="section accueil">
     <div class="container">
         <h2>Bienvenue dans notre Galerie de Photos Naturelles</h2>
-        <p>Explorez notre collection de photos numériques disponibles à l'achat. Un monde de nature à portée de main.</p>
+        <p>Explorez notre collection de photos numériques disponibles à l'achat.</p>
     </div>
     <div class="tree-illustration">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100" height="100">
@@ -249,7 +233,6 @@
 <section id="galerie" class="section galerie">
     <div class="container">
         <h2>Galerie</h2>
-
         <div class="filter-buttons">
             <button onclick="filterPhotos('all')">Toutes</button>
             <button onclick="filterPhotos('nature')">🌿 Nature</button>
@@ -259,23 +242,18 @@
 
         <div class="gallery">
             <div class="photo-card nature active">
-                <img src="soleil.JPG" alt="" class="image-zoom" onclick="openModal('soleil.JPG')">
+                <img src="soleil.JPG" alt="" onclick="openModal('soleil.JPG')">
                 <p>Coucher de soleil en Corse</p>
                 <button>Acheter à 1€</button>
             </div>
             <div class="photo-card mouvement active">
-                <img src="photo-voiture.jpg" alt="" class="image-zoom" onclick="openModal('photo-voiture.jpg')">
-                <p>Porche flou de mouvement artistique</p>
+                <img src="photo-voiture.jpg" alt="" onclick="openModal('photo-voiture.jpg')">
+                <p>Porche flou</p>
                 <button>Acheter à 1€</button>
             </div>
             <div class="photo-card ville active">
-                <img src="photo-poubelle.jpg" alt="" class="image-zoom" onclick="openModal('photo-poubelle.jpg')">
+                <img src="photo-poubelle.jpg" alt="" onclick="openModal('photo-poubelle.jpg')">
                 <p>Photo de rue</p>
-                <button>Acheter à 1€</button>
-            </div>
-            <div class="photo-card mouvement active">
-                <img src="photo-toro.JPG" alt="" class="image-zoom" onclick="openModal('photo-toro.JPG')">
-                <p>Course camarguaise</p>
                 <button>Acheter à 1€</button>
             </div>
         </div>
@@ -290,15 +268,11 @@
 <section id="apropos" class="section apropos">
     <div class="container">
         <h2>À propos</h2>
-        <p>Nous proposons des photos numériques de qualité professionnelle, capturées dans des paysages naturels à travers le monde.</p>
+        <p>Photos numériques de qualité professionnelle, capturées à travers le monde.</p>
     </div>
 </section>
 
-<footer>
-    <div class="container">
-        <p>&copy; 2025 Ma Galerie Naturelle | Tous droits réservés</p>
-    </div>
-    <section id="contact" class="section contact">
+<section id="contact" class="section contact">
     <div class="container">
         <h2>Contact</h2>
         <p>Une question ? Une demande spéciale ? N'hésitez pas à m'écrire !</p>
@@ -311,6 +285,10 @@
     </div>
 </section>
 
+<footer>
+    <div class="container">
+        <p>&copy; 2025 Ma Galerie Naturelle | Tous droits réservés</p>
+    </div>
 </footer>
 
 <script>
