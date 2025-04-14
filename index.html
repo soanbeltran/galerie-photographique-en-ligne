@@ -6,12 +6,68 @@
     <title>Galerie en Ligne de Soan BELTRAN</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        body {
+            background: linear-gradient(to bottom right, #00aaff, #00cc66);
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin: 0;
+            font-family: sans-serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            padding: 20px 0;
+            text-align: center;
+            color: white;
+        }
+
+        header h1 {
+            margin-bottom: 5px;
+        }
+
+        .sous-titre {
+            font-size: 1.2em;
+            color: white;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+            margin-bottom: 10px;
+        }
+
+        header nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        header nav ul li {
+            margin: 10px;
+        }
+
+        header nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        .section {
+            padding: 40px 0;
+            color: white;
+        }
+
         .filter-buttons {
             text-align: center;
             margin: 20px 0;
         }
+
         .filter-buttons button {
-            margin: 0 10px;
+            margin: 10px;
             padding: 10px 20px;
             border: none;
             background-color: #4CAF50;
@@ -19,14 +75,105 @@
             cursor: pointer;
             border-radius: 5px;
         }
+
         .filter-buttons button:hover {
             background-color: #45a049;
         }
-        .photo-card {
-            display: none;
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
         }
+
+        .photo-card {
+            opacity: 0;
+            transform: scale(0.98);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            pointer-events: none;
+            height: 0;
+            overflow: hidden;
+        }
+
         .photo-card.active {
+            opacity: 1;
+            transform: scale(1);
+            pointer-events: auto;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .photo-card button {
+            margin-top: 10px;
+            padding: 10px;
+            width: 100%;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        .modal-content {
+            margin: auto;
             display: block;
+            max-width: 90%;
+            max-height: 80vh;
+        }
+
+        .close {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .tree-illustration {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            color: white;
+        }
+
+        @media screen and (max-width: 600px) {
+            .filter-buttons button {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            header nav ul {
+                flex-direction: column;
+            }
+
+            .tree-illustration svg {
+                width: 80px;
+                height: 80px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
         }
     </style>
 </head>
@@ -34,7 +181,8 @@
 
 <header>
     <div class="container">
-        <h1>Ma Galerie photographique</h1>
+        <h1>Ma Galerie Naturelle</h1>
+        <p class="sous-titre">Bienvenue sur mon site</p>
         <nav>
             <ul>
                 <li><a href="#accueil">Accueil</a></li>
@@ -47,8 +195,8 @@
 
 <section id="accueil" class="section accueil">
     <div class="container">
-        <h2 class="fade-in">Bienvenue dans notre Galerie de Photos Naturelles</h2>
-        <p class="fade-in">Explorez notre collection de photos numériques disponibles à l'achat. Un monde de nature à portée de main.</p>
+        <h2>Bienvenue dans notre Galerie de Photos Naturelles</h2>
+        <p>Explorez notre collection de photos numériques disponibles à l'achat. Un monde de nature à portée de main.</p>
     </div>
     <div class="tree-illustration">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100" height="100">
@@ -103,8 +251,8 @@
 
 <section id="apropos" class="section apropos">
     <div class="container">
-        <h2 class="fade-in">À propos</h2>
-        <p class="fade-in">Nous proposons des photos numériques de qualité professionnelle, capturées dans des paysages naturels à travers le monde.</p>
+        <h2>À propos</h2>
+        <p>Nous proposons des photos numériques de qualité professionnelle, capturées dans des paysages naturels à travers le monde.</p>
     </div>
 </section>
 
@@ -130,9 +278,10 @@
     function filterPhotos(category) {
         const cards = document.querySelectorAll('.photo-card');
         cards.forEach(card => {
-            card.classList.remove('active');
             if (category === 'all' || card.classList.contains(category)) {
                 card.classList.add('active');
+            } else {
+                card.classList.remove('active');
             }
         });
     }
