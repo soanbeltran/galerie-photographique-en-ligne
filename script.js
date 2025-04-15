@@ -1,46 +1,47 @@
-// Tableau contenant les articles du panier
 let cart = [];
 
-// Fonction pour ajouter un article
-function addToCart(item) {
-  cart.push(item);
+function addToCart(itemName) {
+  cart.push(itemName);
   updateCart();
 }
 
-// Mettre à jour l'affichage du panier
 function updateCart() {
-  const cartList = document.getElementById("cart-items");
-  const totalSpan = document.getElementById("cart-total");
+  const cartItems = document.getElementById("cart-items");
+  const cartTotal = document.getElementById("cart-total");
+  cartItems.innerHTML = "";
 
-  cartList.innerHTML = "";
   let total = 0;
-
   cart.forEach((item, index) => {
     const li = document.createElement("li");
-    li.innerHTML = `
-      ${item}
-      <span class="remove-btn" onclick="removeItem(${index})">✖</span>
-    `;
-    cartList.appendChild(li);
+    li.textContent = item + " - 1€";
+
+    const removeBtn = document.createElement("button");
+    removeBtn.textContent = "❌";
+    removeBtn.style.background = "transparent";
+    removeBtn.style.border = "none";
+    removeBtn.style.cursor = "pointer";
+    removeBtn.style.marginLeft = "10px";
+    removeBtn.onclick = () => removeFromCart(index);
+
+    li.appendChild(removeBtn);
+    cartItems.appendChild(li);
+
     total += 1;
   });
 
-  totalSpan.textContent = total;
+  cartTotal.textContent = total;
 }
 
-// Supprimer un article du panier
-function removeItem(index) {
+function removeFromCart(index) {
   cart.splice(index, 1);
   updateCart();
 }
 
-// Vider tout le panier
 function clearCart() {
   cart = [];
   updateCart();
 }
 
-// Ouvrir le modal de paiement
 function openPayment() {
   if (cart.length === 0) {
     alert("Votre panier est vide !");
@@ -49,19 +50,13 @@ function openPayment() {
   document.getElementById("payment-modal").style.display = "flex";
 }
 
-// Fermer le modal de paiement
 function closePayment() {
   document.getElementById("payment-modal").style.display = "none";
 }
 
-// Simuler un paiement fictif
 function processPayment(event) {
   event.preventDefault();
-
-  // Simule un traitement de paiement (juste une pause ici)
-  setTimeout(() => {
-    alert("💳 Paiement fictif réussi ! Merci pour votre achat 😊");
-    clearCart();
-    closePayment();
-  }, 300);
+  alert("Paiement fictif effectué avec succès !");
+  closePayment();
+  clearCart();
 }
