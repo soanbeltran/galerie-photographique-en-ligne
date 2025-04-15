@@ -335,6 +335,33 @@
   function ajouterAuPanier(nomPhoto) {
   alert(`"${nomPhoto}" a été ajouté au panier !`);
 }
+let panier = [];
+
+function ajouterAuPanier(photo) {
+  panier.push(photo);
+  majPanier();
+}
+
+function majPanier() {
+  document.getElementById("cart-count").textContent = panier.length;
+  const ul = document.getElementById("cart-items");
+  ul.innerHTML = "";
+  panier.forEach((item, index) => {
+    const li = document.createElement("li");
+    li.innerHTML = `${item} <button onclick="retirerDuPanier(${index})">❌</button>`;
+    ul.appendChild(li);
+  });
+}
+
+function retirerDuPanier(index) {
+  panier.splice(index, 1);
+  majPanier();
+}
+
+function toggleCart() {
+  const modal = document.getElementById("cart-modal");
+  modal.style.display = modal.style.display === "flex" ? "none" : "flex";
+}
 
 </script>
 
