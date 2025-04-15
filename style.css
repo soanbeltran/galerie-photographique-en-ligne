@@ -1,73 +1,54 @@
-* {
-  box-sizing: border-box;
-}
-
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to right, #00c6ff, #0072ff);
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #2196f3, #4caf50);
   color: white;
 }
 
 header {
-  background-color: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.6);
   padding: 20px;
   text-align: center;
 }
 
-nav ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-  margin: 10px 0 0;
+header h1 {
+  margin: 0;
 }
 
-nav ul li {
-  display: inline;
+nav {
+  margin-top: 10px;
 }
 
-nav a, nav button {
-  background-color: #ff9800;
-  border: none;
+nav a {
+  margin: 0 10px;
   color: white;
-  padding: 10px 15px;
-  border-radius: 10px;
   text-decoration: none;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background 0.3s ease;
+  background: #4caf50;
+  padding: 8px 15px;
+  border-radius: 6px;
 }
 
-nav a:hover, nav button:hover {
-  background-color: #e68900;
+nav a:hover {
+  background: #388e3c;
 }
 
 .section {
-  padding: 50px 20px;
+  padding: 40px 20px;
   text-align: center;
-  animation: fadeIn 1s ease;
 }
 
 .gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 20px;
-  margin-top: 30px;
-  padding: 0 20px;
 }
 
 .photo-card {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.1);
   padding: 15px;
-  transition: transform 0.3s;
-}
-
-.photo-card:hover {
-  transform: scale(1.05);
+  border-radius: 12px;
+  max-width: 250px;
 }
 
 .photo-card img {
@@ -75,110 +56,53 @@ nav a:hover, nav button:hover {
   border-radius: 10px;
 }
 
-button {
-  background-color: #4CAF50;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 10px;
-  color: white;
-  cursor: pointer;
+.photo-card button {
   margin-top: 10px;
-}
-
-button:hover {
-  background-color: #45a049;
-}
-
-footer {
-  text-align: center;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 20px;
-}
-
-/* PANIER */
-.cart {
-  position: fixed;
-  right: 20px;
-  top: 80px;
-  width: 300px;
-  background-color: white;
-  color: black;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.3);
-  display: none;
-  z-index: 1000;
-  max-height: 80vh;
-  overflow-y: auto;
-}
-
-.cart ul {
-  padding: 0;
-  list-style: none;
-  margin: 10px 0;
-}
-
-.cart li {
-  display: flex;
-  justify-content: space-between;
-  padding: 5px 0;
-  border-bottom: 1px solid #ddd;
-}
-
-@keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
-}
-
-/* RESPONSIVE */
-@media (max-width: 600px) {
-  nav ul {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .cart {
-    width: 90%;
-    right: 5%;
-  }
-}
-/* Panier intégré dans la page */
-.panier-section {
-  background-color: rgba(255,255,255,0.1);
-  border-radius: 15px;
-  padding: 30px;
-  margin: 50px auto;
-  max-width: 600px;
+  background: #4caf50;
+  border: none;
+  padding: 10px;
   color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.photo-card button:hover {
+  background: #388e3c;
+}
+
+/* Panier */
+.panier-section {
+  background: rgba(255,255,255,0.1);
+  margin: 40px auto;
+  max-width: 600px;
+  border-radius: 12px;
+  padding: 30px;
 }
 
 .cart-list {
   list-style: none;
   padding: 0;
-  margin-bottom: 15px;
 }
 
 .cart-list li {
   display: flex;
   justify-content: space-between;
-  padding: 8px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  margin: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
 }
 
 .cart-actions {
+  margin-top: 20px;
   display: flex;
   justify-content: space-between;
-  gap: 10px;
 }
 
-/* Modale de paiement */
+/* Paiement */
 .payment-modal {
   display: none;
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   background: rgba(0,0,0,0.8);
   justify-content: center;
   align-items: center;
@@ -187,42 +111,47 @@ footer {
 
 .payment-content {
   background: white;
-  padding: 30px;
-  border-radius: 15px;
-  max-width: 400px;
-  width: 90%;
-  text-align: center;
   color: black;
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
   position: relative;
 }
 
 .payment-content input {
-  display: block;
-  margin: 10px auto;
-  padding: 10px;
   width: 90%;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 6px;
   border: 1px solid #ccc;
-  border-radius: 8px;
 }
 
 .payment-content button {
-  background: #4CAF50;
-  color: white;
-  border: none;
-  padding: 12px 20px;
   margin-top: 15px;
-  cursor: pointer;
+  padding: 10px 20px;
+  background: #4caf50;
+  border: none;
+  color: white;
   border-radius: 8px;
+  cursor: pointer;
 }
 
 .payment-content button:hover {
-  background: #45a049;
+  background: #388e3c;
 }
 
 .payment-content .close {
   position: absolute;
-  top: 10px;
   right: 15px;
-  font-size: 28px;
+  top: 10px;
+  font-size: 24px;
   cursor: pointer;
+}
+
+footer {
+  background: rgba(0, 0, 0, 0.6);
+  text-align: center;
+  padding: 20px;
 }
