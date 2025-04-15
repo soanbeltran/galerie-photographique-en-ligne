@@ -192,6 +192,16 @@
       <li><a href="#contact">Me contacter</a></li>
     </ul>
   </nav>
+  <div id="cart-icon" onclick="toggleCart()">🛒 (<span id="cart-count">0</span>)</div>
+
+<div id="cart-modal" class="modal" onclick="toggleCart()">
+  <div class="cart-content" onclick="event.stopPropagation()">
+    <span class="close" onclick="toggleCart()">&times;</span>
+    <h2>Votre Panier</h2>
+    <ul id="cart-items"></ul>
+  </div>
+</div>
+
 </header>
 
 <section id="accueil" class="section">
