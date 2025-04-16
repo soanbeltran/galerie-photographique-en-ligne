@@ -1,45 +1,38 @@
 // Panier
 let cart = [];
 
-function addToCart(itemName) {
-  cart.push(itemName);
-  updateCartDisplay();
+function addToCart(item) {
+  cart.push(item);
+  updateCart();
 }
 
-function updateCartDisplay() {
-  const cartList = document.getElementById("cart-items");
-  const totalDisplay = document.getElementById("cart-total");
-  cartList.innerHTML = "";
-  let total = 0;
-
-  cart.forEach((item, index) => {
-    total += 1;
+function updateCart() {
+  const list = document.getElementById("cart-items");
+  const total = document.getElementById("cart-total");
+  list.innerHTML = "";
+  let sum = 0;
+  cart.forEach((item, i) => {
     const li = document.createElement("li");
-    li.innerHTML = `
-      ${item} 
-      <span style="cursor: pointer; color: red;" onclick="removeItem(${index})">✖</span>
-    `;
-    cartList.appendChild(li);
+    li.innerText = item + " - 1€ ";
+    const removeBtn = document.createElement("button");
+    removeBtn.textContent = "❌";
+    removeBtn.onclick = () => {
+      cart.splice(i, 1);
+      updateCart();
+    };
+    li.appendChild(removeBtn);
+    list.appendChild(li);
+    sum += 1;
   });
-
-  totalDisplay.textContent = total.toFixed(2);
-}
-
-function removeItem(index) {
-  cart.splice(index, 1);
-  updateCartDisplay();
+  total.innerText = sum;
 }
 
 function clearCart() {
   cart = [];
-  updateCartDisplay();
+  updateCart();
 }
 
 function openPayment() {
-  if (cart.length === 0) {
-    alert("Votre panier est vide !");
-    return;
-  }
   document.getElementById("payment-modal").style.display = "flex";
 }
 
@@ -47,34 +40,14 @@ function closePayment() {
   document.getElementById("payment-modal").style.display = "none";
 }
 
-function processPayment(event) {
-  event.preventDefault();
-  alert("Merci pour votre achat fictif !");
-  closePayment();
+function processPayment(e) {
+  e.preventDefault();
+  alert("Paiement fictif validé !");
   clearCart();
-}
-// Animation au scroll
-const sections = document.querySelectorAll('.section');
-
-function revealSections() {
-  sections.forEach(section => {
-    const sectionTop = section.getBoundingClientRect().top;
-    if (sectionTop < window.innerHeight - 100) {
-      section.classList.add('visible');
-    }
-  });
+  closePayment();
 }
 
-window.addEventListener('scroll', revealSections);
-window.addEventListener('load', revealSections);
-const clickSound = document.getElementById('click-sound');
-
-document.querySelectorAll('button').forEach(button => {
-  button.addEventListener('click', () => {
-    clickSound.currentTime = 0;
-    clickSound.play();
-  });
-});
+// Effet de lumière (suivi souris)
 function handleLightEffect(e) {
   const rect = e.currentTarget.getBoundingClientRect();
   const x = ((e.clientX - rect.left) / rect.width) * 100;
@@ -87,7 +60,8 @@ function handleLightEffect(e) {
 document.querySelectorAll('.photo-card, button').forEach(el => {
   el.addEventListener('mousemove', handleLightEffect);
 });
-// Ouverture de la modale image
+
+// Modale image plein écran
 const modal = document.getElementById('image-modal');
 const modalImg = document.getElementById('modal-image');
 
