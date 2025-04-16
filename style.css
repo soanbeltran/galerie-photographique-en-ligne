@@ -302,3 +302,53 @@ button:active {
   transform: scale(1);
   opacity: 1;
 }
+/* ---- Effet lumière sur les images ---- */
+.photo-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.photo-card::before {
+  content: '';
+  position: absolute;
+  top: var(--y, 50%);
+  left: var(--x, 50%);
+  transform: translate(-50%, -50%);
+  width: 150%;
+  height: 150%;
+  background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 60%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.photo-card:hover::before {
+  opacity: 1;
+}
+
+/* ---- Effet lumière sur les boutons ---- */
+button {
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: var(--y, 50%);
+  left: var(--x, 50%);
+  transform: translate(-50%, -50%);
+  width: 150%;
+  height: 150%;
+  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 60%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+button:hover::before {
+  opacity: 1;
+}
