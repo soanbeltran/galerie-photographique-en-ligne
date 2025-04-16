@@ -87,3 +87,18 @@ function handleLightEffect(e) {
 document.querySelectorAll('.photo-card, button').forEach(el => {
   el.addEventListener('mousemove', handleLightEffect);
 });
+// Ouverture de la modale image
+const modal = document.getElementById('image-modal');
+const modalImg = document.getElementById('modal-image');
+
+document.querySelectorAll('.photo-card img').forEach(img => {
+  img.addEventListener('click', () => {
+    modal.style.display = 'flex';
+    modalImg.src = img.src;
+    modalImg.alt = img.alt;
+  });
+});
+
+function closeImageModal() {
+  modal.style.display = 'none';
+}
