@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
@@ -9,7 +9,7 @@
 <body>
 
   <header>
-    <h1>📸 Galerie Photo soan</h1>
+    <h1>📸 Galerie Photo Soan</h1>
     <nav>
       <a href="#galerie">Galerie</a>
       <a href="#panier">Panier</a>
@@ -17,7 +17,7 @@
     </nav>
   </header>
 
-  <h3>je suis un photographe amateur qui aime tous styles de photos et j'en partage sur ce site, vous avez la possibilité de les acheter en format numérique.</h3>
+  <h3>Je suis un photographe amateur qui aime tous styles de photos et j'en partage sur ce site. Vous avez la possibilité de les acheter en format numérique.</h3>
 
   <section id="galerie" class="section">
     <h2>Galerie</h2>
@@ -29,8 +29,8 @@
       </div>
       <div class="photo-card">
         <img src="https://github.com/user-attachments/assets/054fbe66-ed64-4bf1-a8d0-9422caa653e4" alt="torro">
-        <p>course carmaguaise</p>
-        <button onclick="addToCart('course carmaguaise')">Acheter à 1€</button>
+        <p>course camarguaise</p>
+        <button onclick="addToCart('course camarguaise')">Acheter à 1€</button>
       </div>
       <div class="photo-card">
         <img src="https://github.com/user-attachments/assets/26856d65-234e-4b21-9e5d-bbb2478c13b4" alt="coucher de soleil sur la mer">
@@ -74,28 +74,27 @@
     <p>Une question ? Une demande particulière ? Écrivez-moi !</p>
     <form action="https://formspree.io/f/mdkejvyz" method="POST">
       <label>
-        Your email:
+        Votre email :
         <input type="email" name="email" required>
       </label>
       <label>
-        Your message:
+        Votre message :
         <textarea name="message" required></textarea>
       </label>
-      <button type="submit">Send</button>
+      <button type="submit">Envoyer</button>
     </form>
   </section>
+
+  <!-- Modale image plein écran -->
+  <div id="image-modal" class="image-modal">
+    <span class="close-image" onclick="closeImageModal()">&times;</span>
+    <img id="modal-image" src="" alt="Image agrandie">
+  </div>
 
   <footer>
     <p>&copy; 2025 Galerie en ligne | Soan Beltran</p>
   </footer>
 
   <script src="script.js"></script>
-  <audio id="click-sound" src="click.mp3" preload="auto"></audio>
-<!-- Modale d'image plein écran -->
-<div id="image-modal" class="image-modal">
-  <span class="close-image" onclick="closeImageModal()">&times;</span>
-  <img id="modal-image" src="" alt="Image agrandie">
-</div>
-
 </body>
 </html>
