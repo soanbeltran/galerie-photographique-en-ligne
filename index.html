@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Galerie Photo numérique</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
@@ -15,7 +15,9 @@
       <a href="#panier">Panier</a>
     </nav>
   </header>
-<h3>je suis un photographe amateur qui aime tous styles de photos et j'en partage sur ce site, vous avez la possibilité de les acheter en format numérique.</h3>
+
+  <h3>je suis un photographe amateur qui aime tous styles de photos et j'en partage sur ce site, vous avez la possibilité de les acheter en format numérique.</h3>
+
   <section id="galerie" class="section">
     <h2>Galerie</h2>
     <div class="gallery">
@@ -27,14 +29,14 @@
       <div class="photo-card">
         <img src="https://github.com/user-attachments/assets/054fbe66-ed64-4bf1-a8d0-9422caa653e4" alt="torro">
         <p>course carmaguaise</p>
-        <button onclick="addToCart('Ville de nuit')">Acheter à 1€</button>
+        <button onclick="addToCart('course carmaguaise')">Acheter à 1€</button>
       </div>
-       <div class="photo-card">
+      <div class="photo-card">
         <img src="https://github.com/user-attachments/assets/26856d65-234e-4b21-9e5d-bbb2478c13b4" alt="coucher de soleil sur la mer">
         <p>coucher de soleil sur la mer</p>
         <button onclick="addToCart('coucher de soleil sur la mer')">Acheter à 1€</button>
       </div>
-       <div class="photo-card">
+      <div class="photo-card">
         <img src="https://github.com/user-attachments/assets/e34aaaa9-9eb1-4a86-9479-efb972d2d00e" alt="photo de rue de poubelle">
         <p>photo de rue de poubelle</p>
         <button onclick="addToCart('photo de rue de poubelle')">Acheter à 1€</button>
@@ -52,7 +54,6 @@
     </div>
   </section>
 
-  <!-- Paiement fictif -->
   <div id="payment-modal" class="payment-modal">
     <div class="payment-content">
       <span class="close" onclick="closePayment()">&times;</span>
@@ -67,27 +68,20 @@
     </div>
   </div>
 
-  <!-- Section contact -->
   <section id="contact" class="contact-section">
     <h2>Contact</h2>
     <p>Une question ? Une demande particulière ? Écrivez-moi !</p>
-  <!-- modify this form HTML and place wherever you want your form -->
-<form
-  action="https://formspree.io/f/mdkejvyz"
-  method="POST"
->
-  <label>
-    Your email:
-    <input type="email" name="email">
-  </label>
-  <label>
-    Your message:
-    <textarea name="message"></textarea>
-  </label>
-  <!-- your other form fields go here -->
-  <button type="submit">Send</button>
-</form>
-
+    <form action="https://formspree.io/f/mdkejvyz" method="POST">
+      <label>
+        Your email:
+        <input type="email" name="email" required>
+      </label>
+      <label>
+        Your message:
+        <textarea name="message" required></textarea>
+      </label>
+      <button type="submit">Send</button>
+    </form>
   </section>
 
   <footer>
@@ -95,39 +89,5 @@
   </footer>
 
   <script src="script.js"></script>
-  <script src="https://formspree.io/js/formbutton-v1.min.js" defer></script>
-<script>
-  /* paste this line in verbatim */
-  window.formbutton=window.formbutton||function(){(formbutton.q=formbutton.q||[]).push(arguments)};
-  /* customize formbutton below*/     
-  formbutton("create", {
-    action: "https://formspree.io/f/mdkejvyz",
-    title: "une demande particulière ??",
-    fields: [
-      { 
-        type: "email", 
-        label: "Email:", 
-        name: "email",
-        required: true,
-        placeholder: "your@email.com"
-      },
-      {
-        type: "textarea",
-        label: "Message:",
-        name: "message",
-        placeholder: "What's on your mind?",
-      },
-      { type: "submit" }      
-    ],
-    styles: {
-      title: {
-        backgroundColor: "gray"
-      },
-      button: {
-        backgroundColor: "gray"
-      }
-    }
-  });
-</script>
 </body>
 </html>
