@@ -279,3 +279,26 @@ button:active {
   transform: scale(0.95);
   background-color: #555;
 }
+.photo-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.photo-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.2) 0%, transparent 80%);
+  transform: scale(0);
+  opacity: 0;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.photo-card:hover::before {
+  transform: scale(1);
+  opacity: 1;
+}
