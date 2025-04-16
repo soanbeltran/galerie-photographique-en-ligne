@@ -1,45 +1,38 @@
+// Panier
 let cart = [];
 
 function addToCart(itemName) {
   cart.push(itemName);
-  updateCart();
+  updateCartDisplay();
 }
 
-function updateCart() {
-  const cartItems = document.getElementById("cart-items");
-  const cartTotal = document.getElementById("cart-total");
-  cartItems.innerHTML = "";
-
+function updateCartDisplay() {
+  const cartList = document.getElementById("cart-items");
+  const totalDisplay = document.getElementById("cart-total");
+  cartList.innerHTML = "";
   let total = 0;
+
   cart.forEach((item, index) => {
-    const li = document.createElement("li");
-    li.textContent = item + " - 1€";
-
-    const removeBtn = document.createElement("button");
-    removeBtn.textContent = "❌";
-    removeBtn.style.background = "transparent";
-    removeBtn.style.border = "none";
-    removeBtn.style.cursor = "pointer";
-    removeBtn.style.marginLeft = "10px";
-    removeBtn.onclick = () => removeFromCart(index);
-
-    li.appendChild(removeBtn);
-    cartItems.appendChild(li);
-
     total += 1;
+    const li = document.createElement("li");
+    li.innerHTML = `
+      ${item} 
+      <span style="cursor: pointer; color: red;" onclick="removeItem(${index})">✖</span>
+    `;
+    cartList.appendChild(li);
   });
 
-  cartTotal.textContent = total;
+  totalDisplay.textContent = total.toFixed(2);
 }
 
-function removeFromCart(index) {
+function removeItem(index) {
   cart.splice(index, 1);
-  updateCart();
+  updateCartDisplay();
 }
 
 function clearCart() {
   cart = [];
-  updateCart();
+  updateCartDisplay();
 }
 
 function openPayment() {
@@ -56,7 +49,7 @@ function closePayment() {
 
 function processPayment(event) {
   event.preventDefault();
-  alert("Paiement fictif effectué avec succès !");
+  alert("Merci pour votre achat fictif !");
   closePayment();
   clearCart();
 }
