@@ -75,3 +75,15 @@ document.querySelectorAll('button').forEach(button => {
     clickSound.play();
   });
 });
+function handleLightEffect(e) {
+  const rect = e.currentTarget.getBoundingClientRect();
+  const x = ((e.clientX - rect.left) / rect.width) * 100;
+  const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+  e.currentTarget.style.setProperty('--x', `${x}%`);
+  e.currentTarget.style.setProperty('--y', `${y}%`);
+}
+
+document.querySelectorAll('.photo-card, button').forEach(el => {
+  el.addEventListener('mousemove', handleLightEffect);
+});
