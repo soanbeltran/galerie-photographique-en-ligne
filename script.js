@@ -67,3 +67,11 @@ function revealSections() {
 
 window.addEventListener('scroll', revealSections);
 window.addEventListener('load', revealSections);
+const clickSound = document.getElementById('click-sound');
+
+document.querySelectorAll('button').forEach(button => {
+  button.addEventListener('click', () => {
+    clickSound.currentTime = 0;
+    clickSound.play();
+  });
+});
