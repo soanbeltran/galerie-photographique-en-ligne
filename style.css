@@ -275,3 +275,7 @@ button:hover {
   opacity: 1;
   transform: translateY(0);
 }
+button:active {
+  transform: scale(0.95);
+  background-color: #555;
+}
